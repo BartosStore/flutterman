@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterman/detailPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -40,23 +41,19 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: ListView.builder(
-        itemCount: _counter,
-        itemBuilder: (ctx, index) {
-          return ListTile(
-            leading: const Icon(Icons.donut_small),
-            title: Text("John Snow"),
-            onTap: () {
-              Scaffold.of(ctx).showSnackBar(SnackBar(
-                content: Text("Person: " + (index + 1).toString() + " of " + _counter.toString()),
-                duration: const Duration(seconds: 1),
-              ));
-            },
-          );
-        }
-      )
-      ),
+          padding: const EdgeInsets.all(16),
+          child: ListView.builder(
+              itemCount: _counter,
+              itemBuilder: (ctx, index) {
+                return ListTile(
+                  leading: const Icon(Icons.donut_small),
+                  title: Text("John Snow"),
+                  onTap: () {
+                    Navigator.push(ctx,
+                        MaterialPageRoute(builder: (context) => DetailPage()));
+                  },
+                );
+              })),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
