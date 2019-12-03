@@ -1,33 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutterman/constants.dart';
+import 'package:flutterman/http/githubRepos.dart';
 import 'package:flutterman/http/httpCommunication.dart';
 import 'package:flutterman/pages/listPage.dart';
-import 'package:flutterman/http/post.dart';
 
-class NetPage extends StatefulWidget {
-  NetPage({Key key}) : super(key: key);
+class GithubPage extends StatefulWidget {
+  GithubPage({Key key}) : super(key: key);
 
   @override
-  NetPageState createState() => NetPageState();
+  GithubPageState createState() => GithubPageState();
 }
 
-class NetPageState extends State<NetPage> {
-  Future<Post> post;
+class GithubPageState extends State<GithubPage> {
+  Future<ReposList> repos;
 
   @override
   void initState() {
     super.initState();
-    post = HttpCommunication().fetchTestData(Constants().publicUrlTest);
+    repos = HttpCommunication().fetchGithubData(Constants().githubReposUrl);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Contact detail"),
+        title: Text("BartosStore Github Repos"),
       ),
-      body: FutureBuilder<Post>(
-        future: post,
+      body: FutureBuilder<ReposList>(
+        future: repos,
         builder: (ctx, snapshot) {
           if (snapshot.hasData) {
             return Column(
@@ -42,7 +42,7 @@ class NetPageState extends State<NetPage> {
                         style: DefaultTextStyle.of(ctx).style,
                         children: <TextSpan>[
                           TextSpan(text: 'Title: ', style: TextStyle(fontWeight: FontWeight.bold)),
-                          TextSpan(text: '${snapshot.data.title.substring(0, 20)}', style: TextStyle(fontStyle: FontStyle.italic)),
+                          TextSpan(text: '${snapshot.data.repos[0].getName()}', style: TextStyle(fontStyle: FontStyle.italic)),
                         ],
                       ),
                     ),
@@ -56,7 +56,7 @@ class NetPageState extends State<NetPage> {
                         style: DefaultTextStyle.of(ctx).style,
                         children: <TextSpan>[
                           TextSpan(text: 'Response body: ', style: TextStyle(fontWeight: FontWeight.bold)),
-                          TextSpan(text: '${snapshot.data.body}', style: TextStyle(fontStyle: FontStyle.italic)),
+                          TextSpan(text: '${snapshot.data.repos[0].htmlUrl}', style: TextStyle(fontStyle: FontStyle.italic)),
                         ],
                       ),
                     ),
