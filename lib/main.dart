@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutterman/pages/netPage.dart';
+import 'package:flutterman/pages/crossroad.dart';
+// import 'package:flutterman/pages/netPage.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
-      home: NetPage(), // MyHomePage(title: 'My app'),
+      home: Crossroad(), // NetPage(), // MyHomePage(title: 'My app'),
     );
   }
 }
