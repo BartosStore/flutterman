@@ -26,11 +26,13 @@ dependencies:
   http: ^0.12.0+2
   dson_core: ^0.15.6
   url_launcher: ^5.2.7
-  intl: ^0.16.0
+  intl: ^0.15.8
   camera:
   path:
   path_provider:
   barcode_scan: ^1.0.0
+  vcard_parser: ^0.1.6
+  expandable: ^3.0.1
 
 dev_dependencies:
   flutter_test:
