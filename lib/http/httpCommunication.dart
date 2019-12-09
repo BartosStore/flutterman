@@ -17,8 +17,6 @@ class HttpCommunication {
     final response = await http.get(url);
     if (response.statusCode == 200) {
       var repos = ReposList.fromJson(jsonDecode(response.body));
-      print(repos.repos.length);
-      print(repos.repos[0].getName());
       return repos;
     } else {
       throw Exception("Failed to load data!");

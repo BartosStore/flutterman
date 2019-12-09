@@ -1,12 +1,11 @@
+import 'package:intl/intl.dart';
+
 class ReposList {
   final List<Repo> repos;
 
   ReposList({this.repos});
 
   factory ReposList.fromJson(List<dynamic> json) {
-    // var list = json['list'] as List;
-    // List<Repo> repos = list.map((i) => Repo.fromJson(i)).toList();
-    // var list = json as List;
     List<Repo> repos = new List<Repo>();
     repos = json.map((i) => Repo.fromJson(i)).toList();
 
@@ -20,19 +19,27 @@ class ReposList {
 
 class Repo {
   final String name;
+  final String description;
   final String htmlUrl;
+  final DateTime updatedAt;
+  final String updatedAtFormatted;
+  final int size;
 
-  Repo({this.name, this.htmlUrl});
+  Repo({this.name, this.description, this.htmlUrl, this.updatedAt, this.updatedAtFormatted, this.size});
 
   factory Repo.fromJson(Map<String, dynamic> json) {
-    return new Repo(name: json['name'], htmlUrl: json['html_url']);
-  }
-
-  String getName() {
-    return this.name;
-  }
-
-  String getHtmlurl() {
-    return this.htmlUrl;
+    String descriptionTemp = json['description'];
+    if (descriptionTemp == "") {
+      descriptionTemp = " - ";
+    }
+    DateTime dt = DateTime.parse(json['updated_at']);
+    String dtFormatted = DateFormat('H:mm:ss - dd.MM.yyyy').format(dt);
+    return new Repo(
+        name: json['name'],
+        description: descriptionTemp,
+        htmlUrl: json['html_url'],
+        updatedAt: DateTime.parse(json['updated_at']),
+        updatedAtFormatted: dtFormatted,
+        size: json['size']);
   }
 }

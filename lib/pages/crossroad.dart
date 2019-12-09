@@ -1,4 +1,6 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterman/pages/camera.dart';
 import 'package:flutterman/pages/githubPage.dart';
 import 'package:flutterman/pages/listPage.dart';
 import 'package:flutterman/pages/netPage.dart';
@@ -11,6 +13,14 @@ class Crossroad extends StatefulWidget {
 }
 
 class CrossroadState extends State<Crossroad> {
+  Future<CameraDescription> _camera;
+
+  @override
+  void initState() {
+    _camera = initCamera();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,8 +32,12 @@ class CrossroadState extends State<Crossroad> {
             RaisedButton(
               child: Text("Contact Page"),
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ListPage(title: 'Contacts',)));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => ListPage(
+                              title: 'Contacts',
+                            )));
               },
             ),
             RaisedButton(
@@ -38,6 +52,28 @@ class CrossroadState extends State<Crossroad> {
               onPressed: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => GithubPage()));
+              },
+            ),
+            FutureBuilder(
+              future: _camera,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  return RaisedButton(
+                    child: Text("Camera"),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => TakePictureScreen(
+                                    camera: snapshot.data,
+                                  )));
+                    },
+                  );
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
               },
             )
           ],
