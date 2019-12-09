@@ -4,6 +4,7 @@ import 'package:flutterman/pages/camera.dart';
 import 'package:flutterman/pages/githubPage.dart';
 import 'package:flutterman/pages/listPage.dart';
 import 'package:flutterman/pages/netPage.dart';
+import 'package:flutterman/pages/qrCode.dart';
 
 class Crossroad extends StatefulWidget {
   @override
@@ -74,6 +75,13 @@ class CrossroadState extends State<Crossroad> {
                     child: CircularProgressIndicator(),
                   );
                 }
+              },
+            ),
+            RaisedButton(
+              child: Text('QR Code'),
+              onPressed: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => QrCode()));
               },
             )
           ],
