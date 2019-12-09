@@ -5,6 +5,12 @@ import 'package:flutterman/http/githubRepos.dart';
 import 'package:flutterman/http/httpCommunication.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+/*
+ * TODOS:
+ * - wrap ListTile with Card widget for material UX
+ * - add InkWell into Card widget
+ * - solve right overflow of text
+ */
 class GithubPage extends StatefulWidget {
   GithubPage({Key key}) : super(key: key);
 
