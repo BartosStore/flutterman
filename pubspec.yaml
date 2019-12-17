@@ -33,6 +33,7 @@ dependencies:
   barcode_scan: ^1.0.0
   vcard_parser: ^0.1.6
   expandable: ^3.0.1
+  graphql_flutter: ^2.1.0
 
 dev_dependencies:
   flutter_test:
