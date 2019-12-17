@@ -2,6 +2,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterman/pages/camera.dart';
 import 'package:flutterman/pages/githubPage.dart';
+import 'package:flutterman/pages/graphql.dart';
 import 'package:flutterman/pages/listPage.dart';
 import 'package:flutterman/pages/netPage.dart';
 import 'package:flutterman/pages/qrCode.dart';
@@ -38,8 +39,8 @@ class CrossroadState extends State<Crossroad> {
                 Container(
                   height: buttonSize,
                   width: buttonSize,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.lightGreen)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.lightGreen)),
                   child: RaisedButton(
                     child: Text("Contact Page"),
                     color: Colors.green,
@@ -56,8 +57,8 @@ class CrossroadState extends State<Crossroad> {
                 Container(
                   height: buttonSize,
                   width: buttonSize,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.lightGreen)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.lightGreen)),
                   child: RaisedButton(
                     child: Text("Net Page"),
                     color: Colors.green,
@@ -70,8 +71,8 @@ class CrossroadState extends State<Crossroad> {
                 Container(
                   height: buttonSize,
                   width: buttonSize,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.lightGreen)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.lightGreen)),
                   child: RaisedButton(
                     child: Text("Github Page"),
                     color: Colors.green,
@@ -90,8 +91,8 @@ class CrossroadState extends State<Crossroad> {
                 Container(
                   height: buttonSize,
                   width: buttonSize,
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.lightGreen)),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.lightGreen)),
                   child: FutureBuilder(
                     future: _camera,
                     builder: (context, snapshot) {
@@ -127,6 +128,19 @@ class CrossroadState extends State<Crossroad> {
                       onPressed: () {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) => QrCode()));
+                      },
+                    )),
+                Container(
+                    height: buttonSize,
+                    width: buttonSize,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: Colors.lightGreen)),
+                    child: RaisedButton(
+                      child: Text('GraphQl'),
+                      color: Colors.green,
+                      onPressed: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Graphql()));
                       },
                     ))
               ],
