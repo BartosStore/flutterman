@@ -9,7 +9,7 @@ class QrCode extends StatefulWidget {
 }
 
 class QrCodeState extends State<QrCode> {
-  final vcard_tags = [
+  final vcardTags = [
     'N',
     'ORG',
     'EMAIL;TYPE=INTERNET',
@@ -30,7 +30,7 @@ class QrCodeState extends State<QrCode> {
       Map<String, String> vcardString = new Map();
 
       vcardObject.forEach((key, value) {
-        if (vcard_tags.contains(key)) {
+        if (vcardTags.contains(key)) {
           vcardString.addAll({key.toString(): value.toString()});
         }
       });
